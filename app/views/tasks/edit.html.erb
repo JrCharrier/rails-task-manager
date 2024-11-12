@@ -1,0 +1,11 @@
+<div class="container mt-5">
+  <div class="card p-4">
+    <h2 class="card-title text-center mb-4">Edit Your Task</h2>
+
+    <%= render "form", task: @task %>
+
+    <div class="mt-4 text-center">
+      <%= link_to "All tasks", tasks_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+</div>

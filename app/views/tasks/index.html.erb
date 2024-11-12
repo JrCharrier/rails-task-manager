@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title mb-4">My Tasks</h1>
+      <ul class="list-group list-group-flush">
+        <% @tasks.each do |task| %>
+          <li class="list-group-item d-flex align-items-center justify-content-between">
+            <div class="form-check">
+              <%= check_box_tag "task_#{task.id}", task.id, task.completed, class: 'form-check-input me-2 task-checkbox' %>
+              <label class="form-check-label" for="task_<%= task.id %>">
+                <%= link_to task.title, task_path(task), class: "text-decoration-none" %>
+              </label>
+            </div>
+            <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" do %>
+            <i class="fa-regular fa-trash-can"></i>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+      <div class="mt-4">
+        <%= link_to "Add new task", new_task_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
